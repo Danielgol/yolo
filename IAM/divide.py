@@ -1,7 +1,7 @@
 import os
 import shutil
 
-with open("validationset2.txt", "r") as f:
+with open("trainset.txt", "r") as f:
 	trains = f.readlines()
 	f.close()
 
@@ -13,8 +13,9 @@ for item in trains:
 
 for img in images:
 	try:
+		print(img)
 		origin = "IAM/"+img
-		destin = "images/val/"+img
+		destin = "images/train/"+img
 		shutil.move(origin, destin)
 		print(img)
 	except:
