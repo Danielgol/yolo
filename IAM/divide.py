@@ -13,8 +13,8 @@ for item in trains:
 
 for img in images:
 	try:
-		origin = "Dataset/"+img
-		destin = "val/"+img
+		origin = "IAM/"+img
+		destin = "images/val/"+img
 		shutil.move(origin, destin)
 		print(img)
 	except:
