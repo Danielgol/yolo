@@ -1,7 +1,7 @@
 import os
 import shutil
 
-with open("validationset1.txt", "r") as f:
+with open("validationset2.txt", "r") as f:
 	trains = f.readlines()
 	f.close()
 
