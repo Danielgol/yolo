@@ -15,7 +15,8 @@ for img in images:
 	try:
 		origin = "IAM/"+img
 		destin = "images/val/"+img
+		print(origin, destin)
 		shutil.move(origin, destin)
-		print(img)
+		
 	except:
 		a = 1
