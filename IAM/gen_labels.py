@@ -15,7 +15,7 @@ for img in os.listdir("images/val"):
 	val.append("images/val/"+img)
 
 
-for t in train:
+for t in val:
 
 	img = cv2.imread(t)
 	img_height = img.shape[0]
@@ -27,7 +27,7 @@ for t in train:
 	tree = ET.parse(xml)
 	root = tree.getroot()
 
-	file = 'labels/train/'+name+'.txt'
+	file = 'labels/val/'+name+'.txt'
 	open(file, 'w+')
 
 
@@ -82,7 +82,7 @@ for t in train:
 					height = height/img_height
 					print("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height))
 					with open(file, "a+") as f:
-						f.write("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height))
+						f.write("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height)+"\n")
 						f.close()
 				else:
 					"""
@@ -113,7 +113,7 @@ for t in train:
 						height = height/img_height
 						print("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height))
 						with open(file, "a+") as f:
-							f.write("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height))
+							f.write("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height)+"\n")
 							f.close()
 
 		except:
