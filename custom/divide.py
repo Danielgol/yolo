@@ -22,7 +22,7 @@ for img in images:
 		a = 1
 
 
-with open("validationset1.txt", "r") as f:
+with open("valset.txt", "r") as f:
 	trains = f.readlines()
 	f.close()
 
