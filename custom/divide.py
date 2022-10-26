@@ -1,7 +1,7 @@
 import os
 import shutil
 
-with open("train.txt", "r") as f:
+with open("trainset.txt", "r") as f:
 	trains = f.readlines()
 	f.close()
 
