@@ -1,2 +1,4 @@
-/custom/images
-/yoloenv
+custom/images/train/*
+custom/images/val/*
+!custom/images/train/.gitkeep
+!custom/images/val/.gitkeep
