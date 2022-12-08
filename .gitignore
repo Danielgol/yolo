@@ -1,4 +1,5 @@
 custom/images/train/*
 custom/images/val/*
+custom/iamgt-xmls
 !custom/images/train/.gitkeep
 !custom/images/val/.gitkeep

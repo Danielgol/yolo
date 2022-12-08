@@ -47,6 +47,15 @@ if __name__ == '__main__':
 		item = item.split('-')[:-1]
 		item = "-".join(item)+ext
 		val_images.append(item)
+
+	with open("testset_iam.txt", "r") as f:
+		tests = f.readlines()
+		f.close()
+	test_images = [] # todos os nomes das imagens de train (sem path)
+	for item in tests:
+		item = item.split('-')[:-1]
+		item = "-".join(item)+ext
+		test_images.append(item)
 	# ============================================================================
 
 
@@ -62,6 +71,13 @@ if __name__ == '__main__':
 		name = img.split("/")[-1]
 		if name in val_images:
 			destin = "images/val/"+name
+			print(img, destin)
+			shutil.move(img, destin)
+
+	for img in data_images:
+		name = img.split("/")[-1]
+		if name in test_images:
+			destin = "images/test/"+name
 			print(img, destin)
 			shutil.move(img, destin)
 
@@ -89,5 +105,17 @@ if __name__ == '__main__':
 		abso = abso.split("/")[:-1]
 		abso =  "/".join(abso)+"/images/val/"+img
 		with open("val.txt", "a+") as f:
+			f.write(abso+'\n')
+			f.close()
+
+	open('test.txt', 'w').close()
+	imgs = os.listdir("images/test")
+	for img in imgs:
+		if ".gitkeep" in img:
+			continue
+		abso = os.path.abspath(img)
+		abso = abso.split("/")[:-1]
+		abso =  "/".join(abso)+"/images/test/"+img
+		with open("test.txt", "a+") as f:
 			f.write(abso+'\n')
 			f.close()

@@ -4,9 +4,9 @@ import numpy as np
 import xml.etree.ElementTree as ET
 
 
-prof = ['a01-020x', 'b02-013', 'c03-003e', 'e01-025','f03-174']
+#prof = ['a01-020x', 'b02-013', 'c03-003e', 'e01-025','f03-174']
 
-sset = "train" # train val
+sset = "test" # train val
 path = "images/"+sset+"/"
 subset = os.listdir(path)
 
@@ -31,8 +31,8 @@ for t in subset:
 	tree = ET.parse(xml)
 	root = tree.getroot()
 
-	#file = "labels/"+set+"/"+name+".txt"
-	#open(file, 'w+')
+	file = "labels/"+sset+"/"+name+".txt"
+	open(file, 'w+')
 
 	squares = []
 	for child in root[1]:
@@ -71,14 +71,34 @@ for t in subset:
 		x += width/2
 		y += height/2
 
+		#img = cv2.circle(img, (int(x),int(y)), 2, (0, 0, 255), 20)
+
 		x = x/img_width
 		y = y/img_height
 		width = width/img_width
 		height = height/img_height
+
+		"""
+		norm_xc = x
+		norm_yc = y
+		norm_w = width
+		norm_h = height
+
+		height, width, _ = img.shape
+
+		un_h = int(norm_h * height)
+		un_w = int(norm_w * width)
+		un_x = int((norm_xc * width) - (un_w/2))
+		un_y = int((norm_yc * height) - (un_h/2))
+		"""
+
+		#img = cv2.circle(img, (int((norm_xc * width)),  int((norm_yc * height))) , 2, (0, 0, 255), 20)
+		#img = cv2.rectangle(img, (un_x, un_y), (un_x+un_w, un_y+un_h), (0, 0, 255), 6)
+
 		#print("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height))
-		#with open(file, "a+") as f:
-		#	f.write("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height)+"\n")
-		#	f.close()
+		with open(file, "a+") as f:
+			f.write("0 "+str(x)+" "+str(y)+" "+str(width)+" "+str(height)+"\n")
+			f.close()
 
 	#resized = cv2.resize(img, (500,700))
 	#cv2.imshow("img", resized)
