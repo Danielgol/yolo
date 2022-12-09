@@ -126,7 +126,7 @@ def detect(save_img=False):
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=3)
                     # import pdb; pdb.set_trace()
                     #save xml in pascal mode
-                    writer_xml.addObject('word', round(xyxy[0].item()), round(xyxy[1].item()) , round(xyxy[2].item()), round(xyxy[3].item()), conf)
+                    writer_xml.addObject('word', round(xyxy[0].item()), round(xyxy[1].item()) , round(xyxy[2].item()), round(xyxy[3].item()), conf.item())
                 writer_xml.save(f"{str(save_dir / p.name)[:-4]}.xml")
 
             # Print time (inference + NMS)
