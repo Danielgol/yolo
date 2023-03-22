@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
 
 	for img in os.listdir("./labels/train"):
+		img = img.split(".")[0]+ext
 		abso = os.path.abspath(img)
 		abso = abso.split("/")[:-1]
 		abso =  "/".join(abso)+"/images/train/"+img
@@ -25,6 +26,7 @@ if __name__ == '__main__':
 			f.close()
 
 	for img in os.listdir("./labels/val"):
+		img = img.split(".")[0]+ext
 		abso = os.path.abspath(img)
 		abso = abso.split("/")[:-1]
 		abso =  "/".join(abso)+"/images/val/"+img
