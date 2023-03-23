@@ -13,6 +13,7 @@ if __name__ == '__main__':
 	ext = "."+opt.extension
 
 	open('train.txt', 'w').close()
+	open('test.txt', 'w').close()
 	open('val.txt', 'w').close()
 
 
@@ -31,5 +32,14 @@ if __name__ == '__main__':
 		abso = abso.split("/")[:-1]
 		abso =  "/".join(abso)+"/images/val/"+img
 		with open("val.txt", "a+") as f:
+			f.write(abso+'\n')
+			f.close()
+			
+	for img in os.listdir("./labels/test"):
+		img = img.split(".")[0]+ext
+		abso = os.path.abspath(img)
+		abso = abso.split("/")[:-1]
+		abso =  "/".join(abso)+"/images/test/"+img
+		with open("test.txt", "a+") as f:
 			f.write(abso+'\n')
 			f.close()
