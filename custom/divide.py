@@ -18,6 +18,8 @@ if __name__ == '__main__':
 
 
 	for img in os.listdir("./labels/train"):
+		if "gitkeep" in img:
+			continue
 		img = img.split(".")[0]+ext
 		abso = os.path.abspath(img)
 		abso = abso.split("/")[:-1]
@@ -27,6 +29,8 @@ if __name__ == '__main__':
 			f.close()
 
 	for img in os.listdir("./labels/val"):
+		if "gitkeep" in img:
+			continue
 		img = img.split(".")[0]+ext
 		abso = os.path.abspath(img)
 		abso = abso.split("/")[:-1]
@@ -36,6 +40,8 @@ if __name__ == '__main__':
 			f.close()
 			
 	for img in os.listdir("./labels/test"):
+		if "gitkeep" in img:
+			continue
 		img = img.split(".")[0]+ext
 		abso = os.path.abspath(img)
 		abso = abso.split("/")[:-1]
