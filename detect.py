@@ -136,7 +136,7 @@ def detect(save_img=False):
                     y2 = round(xyxy[3].item())
                     im_width = im0.shape[1]
                     im_height = im0.shape[0]
-                    line = "{} {:.6f} {:.6f} {:.6f} {:.6f} {:.6f}".format(label, conf, ((x2+x1)/2)/im_width, ((y2+y1)/2)/im_height, (x2-x1)/im_width, (y2-y1)/im_height) + "\n"
+                    line = "{} {:.6f} {:.6f} {:.6f} {:.6f} {:.6f}".format(int(cls), conf, ((x2+x1)/2)/im_width, ((y2+y1)/2)/im_height, (x2-x1)/im_width, (y2-y1)/im_height) + "\n"
                     writer_txt.write(line)
                     
                 writer_txt.close()    
