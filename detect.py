@@ -112,6 +112,7 @@ def detect(save_img=False):
 
                 #write xml
                 writer_xml = Writer(f"{p.name}", img.shape[0], img.shape[1])
+                writer_txt = open(f"{str(save_dir / p.name)[:-4]}.txt", 'w')
 
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
@@ -127,6 +128,18 @@ def detect(save_img=False):
                     # import pdb; pdb.set_trace()
                     #save xml in pascal mode
                     writer_xml.addObject(f'{names[int(cls)]}', round(xyxy[0].item()), round(xyxy[1].item()) , round(xyxy[2].item()), round(xyxy[3].item()), f'{conf:.2f}')
+                    
+                    #save in yolo mode
+                    x1 = round(xyxy[0].item())
+                    y1 = round(xyxy[1].item())
+                    x2 = round(xyxy[2].item())
+                    y2 = round(xyxy[3].item())
+                    im_width = im0.shape[1]
+                    im_height = im0.shape[0]
+                    line = "{} {:.6f} {:.6f} {:.6f} {:.6f} {:.6f}".format(label, ((x2+x1)/2)/im_width, ((y2+y1)/2)/im_height, (x2-x1)/im_width, (y2-y1)/im_height, conf) + "\n"
+                    writer_txt.write(line)
+                    
+                writer_txt.close()    
                 writer_xml.save(f"{str(save_dir / p.name)[:-4]}.xml")
 
             # Print time (inference + NMS)
